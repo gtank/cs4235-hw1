@@ -6,17 +6,17 @@
 #define ADDRSIZE 4
 
 int main() {
-    u_long diff;
+    unsigned long diff;
     int addr = (int)system;
     char *buf1 = (char*)malloc(BUFSIZE), *buf2 = (char*)malloc(BUFSIZE);
 
-    diff = (u_long)buf2 - (ulong)buf1;
+    diff = (unsigned long)buf2 - (unsigned long)buf1;
     printf("buf1 = %p, buf2 = %p, diff = 0x%x bytes\n", buf1, buf2, diff);
 
     memset(buf2, 'A', BUFSIZE-1), buf2[BUFSIZE-1] = '\0';
 
     printf("before overflow: buf2 = %s\n", buf2);
-    memset(buf1, 'B', (u_int)(diff));
+    memset(buf1, 'B', (unsigned int)(diff));
     memcpy(buf1+diff, &addr, ADDRSIZE);
     printf("after overflow: buf2 = %s\n", buf2);
 
