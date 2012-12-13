@@ -16,8 +16,8 @@ with the address of system. The fptr call then feeds the second argument to
 system instead of myprint.
 
 Question 2:
-
 Run q2 to demonstrate a heap overflow.
+
 The program calculates the difference in memory location between two malloc'd char buffers.
 It fills the lower buffer with "A" and then overflows the higher buffer to
 overwrite the first 4 bytes of the lower buffer with the address of system().
