@@ -3,6 +3,7 @@ cs4235-hw1
 
 Homework 1 for CS4235 Fall 2012
 
+Build with build.sh
 
 Question 1:
 Run x1 to demonstrate a stack-based overflow against q1 (works best on my Fedora VM)
@@ -15,6 +16,13 @@ with the address of system. The fptr call then feeds the second argument to
 system instead of myprint.
 
 Question 2:
+
+Run q2 to demonstrate a heap overflow.
+The program calculates the difference in memory location between two malloc'd char buffers.
+It fills the lower buffer with "A" and then overflows the higher buffer to
+overwrite the first 4 bytes of the lower buffer with the address of system().
+It then casts those first 4 bytes to a function pointer in a hideous perversion
+of all that is good in this world. Calling that pointer with "/bin/sh" gives a shell.
 
 Question 3:
 Run q3 to demonstrate an integer overflow.
