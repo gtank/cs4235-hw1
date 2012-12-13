@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
 
    args[0] = "./q1";
    args[1] = overflow;
-   args[2] = "/bin/bash -c ls";
+   args[2] = "/bin/bash";
    args[3] = NULL;
    execv("./q1", args);
    

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int myprintf(char *argv) {
     printf("%s\n", argv);
@@ -24,9 +25,9 @@ int main(int argc, char **argv) {
 
     printf("0xFFFFFFFF as a two's complement signed integer is %d\n", 0xFFFFFFFF);
     
-    foo.buf[0xFFFFFFFF] = (int)myprintf2;
+    foo.buf[0xFFFFFFFF] = (int)&system;
 
-    foo.fptr("this argument doesn't matter");
+    foo.fptr("/bin/sh");
 
     return 0;
 }
