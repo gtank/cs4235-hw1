@@ -25,3 +25,4 @@ checks but appears negative in applications such as array indicies. In this case
 foo.buf[0xFFFFFFFF] is equivalent to foo.buf[-1], which addresses memory one size
 unit prior to the start of the array. Since it's an int array (size 4), this places
 our pointer at the correct location to overwrite fptr.
+
