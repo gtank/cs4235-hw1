@@ -2,24 +2,25 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define BUFSIZE 16
+#define OVERSIZE 8
+
 int main() {
-    unsigned char *buf = malloc(8);
-    unsigned char *target = malloc(8);
+    u_long diff;
+    char *buf1 = (char*)malloc(BUFSIZE), *buf2 = (char*)malloc(BUFSIZE);
 
-    unsigned long diff = (unsigned long)target - (unsigned long)buf;
+    diff = (u_long)buf2 - (ulong)buf1;
+    printf("buf1 = %p, buf2 = %p, diff = 0x%x bytes\n", buf1, buf2, diff);
 
-    memset(target, 0x41, 7);
-    target[7] = '\0';
+    memset(buf2, 'A', BUFSIZE-1), buf2[BUFSIZE-1] = '\0';
 
-    printf("target buffer: %s\n", target);
-    printf("overflowing...\n");
+    printf("before overflow: buf2 = %s\n", buf2);
+    memset(buf1, 'B', (u_int)(diff + OVERSIZE));
+    printf("after overflow: buf2 = %s\n", buf2);
 
-    memset(buf, 0x42, diff + 7);
-
-    printf("target buffer: %s\n", target);
-
-    free(buf);
-    free(target);
+    /* lasciate ogni speranza */
+    ((int(*)(char*))(*((int*)buf2)))("hi");
 
     return 0;
 }
+
