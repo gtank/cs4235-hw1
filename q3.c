@@ -17,15 +17,17 @@ int main(int argc, char **argv) {
         int buf[4];
     } foo;
 
+    unsigned int index = 0xFFFFFFFF;//atoi(argv[1]);
+
     foo.buf[0] = 0xDEADBEEF;
 
     foo.fptr = myprintf;
 
     foo.fptr("fptr is myprintf");
 
-    printf("0xFFFFFFFF as a two's complement signed integer is %d\n", 0xFFFFFFFF);
+    printf("Input as a two's complement signed integer is %d\n", index);
     
-    foo.buf[0xFFFFFFFF] = (int)&system;
+    foo.buf[index] = (int)&system;
 
     foo.fptr("/bin/sh");
 
