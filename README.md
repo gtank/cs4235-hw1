@@ -19,7 +19,7 @@ Question 2:
 Run q2 to demonstrate a heap overflow.
 
 The program calculates the difference in memory location between two malloc'd char buffers.
-It fills the lower buffer with "A" and then overflows the higher buffer to
+It fills the higher buffer with "A" and then overflows the lower buffer to
 overwrite the first 4 bytes of the lower buffer with the address of system().
 It then casts those first 4 bytes to a function pointer in a hideous perversion
 of all that is good in this world. Calling that pointer with "/bin/sh" gives a shell.
